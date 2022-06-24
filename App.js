@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import ComponentsScreen from "./src/screens/ComponentsScreen";
+import ListScreen from "./src/screens/ListScreen";
+import TouchOp from "./src/screens/TouchOp";
+import imageScreen from "./src/screens/imageScreen";
+import CounterScreen from "./src/screens/CounterScreen";
+import ColorScreen from "./src/screens/ColorScreen";
+import squareColorScreen from "./src/screens/squareColorScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+
+const navigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Components: ComponentsScreen,
+    List: ListScreen,
+    TouchOp: TouchOp,
+    image: imageScreen,
+    Counter: CounterScreen,
+    Color:ColorScreen,
+    SquareColor : squareColorScreen,
   },
-});
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "FirstApp",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
